@@ -1,7 +1,9 @@
-[![Gitter chat](https://badges.gitter.im/MacGapProject/MacGap2.png)](https://gitter.im/MacGapProject/MacGap2)
+# Bind
 
-# Welcome to MacGap 2.
+### To get running in development
 
-For usage notes and API documentation, visit http://docs.macgap.com.
+`cd ~/bind/public`
 
-To submit an issue or ask for help, go to the GitHub issue queue at https://github.com/MacGapProject/MacGap2/issues
+`jsx --watch views/ dist/`
+
+Open `Bind.xcodeproj`
