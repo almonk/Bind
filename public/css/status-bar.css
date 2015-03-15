@@ -1,0 +1,9 @@
+.status-bar {
+  height: 18px;
+  border-top: 1px solid #E7EAED;
+  background-color: #fff;
+  font-size: 11px;
+  line-height: 17px;
+  padding-left: 10px;
+  color: #ccc;
+}

@@ -1,0 +1,56 @@
+.properties-panel {
+  width: 240px;
+  background-color: #E6E6E6;
+  border-left: 1px solid #B8B8B8;
+}
+
+.properties-panel.is-hidden {
+  width: 0px;
+}
+
+.properties-panel__element-name {
+  border-bottom: 1px solid #B8B8B8;
+  padding: 7px;
+  text-decoration: none;
+  color: black;
+  background-color: #F5F5F5;
+  color: #818181;
+  font-size: 12px;
+  height: 28px;
+  font-family: 'Source Code Pro', monospace!important;
+}
+
+.properties-panel__divider-name {
+  border-top: 1px solid #B8B8B8;
+  border-bottom: 1px solid #B8B8B8;
+  padding: 7px;
+  text-decoration: none;
+  color: black;
+  background-color: #F5F5F5;
+  color: #818181;
+  font-size: 12px;
+  height: 28px;
+  margin-top: 10px;
+}
+
+.properties-panel__form-element {
+  width: 119px;
+  display: inline-block;
+  padding: 7px;
+  overflow: hidden;
+  margin-bottom: -8px;
+}
+
+.properties-panel__form-element input {
+  width: 100%;
+  cursor: text;
+  text-align: right;
+}
+
+.properties-panel__form-element label {
+  display: block;
+  text-align: center;
+  color: #818181;
+  font-size: 12px;
+  margin-top: 3px;
+}

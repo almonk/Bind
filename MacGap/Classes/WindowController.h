@@ -9,15 +9,17 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 #import "MacGap.h"
+#import "WAYWindow.h"
 
 @class WebViewDelegate;
 
-@interface WindowController : NSWindowController
+@interface WindowController : NSWindowController <NSMenuDelegate>
 {
     IBOutlet WebView* webView;
-    IBOutlet NSWindow* window;
+    IBOutlet WAYWindow* window;
     WebViewDelegate* webViewDelegate;
     JSContext* jsContext;
+
 }
 
 @property (nonatomic, readonly, strong) NSMutableDictionary* pluginObjects;
@@ -35,9 +37,20 @@
 - (id) initWithURL:(NSString *) url;
 - (id) initWithRequest: (NSURLRequest *)request;
 
+
 - (id)getCommandInstance:(NSString*)pluginName;
+- (void) willImportFile;
+- (void) willSaveFile;
+- (void) switchToGss;
+- (void) switchToHtml;
+- (void) switchToCss;
+-(IBAction)toggleSidebar:(id)sender;
+-(IBAction)toggleProperties:(id)sender;
+-(IBAction)willPlaceImage:(id)sender;
+
 //- (void)registerPlugin:(Plugin*)plugin withClassName:(NSString*)className;
 //- (void)registerPlugin:(Plugin*)plugin withPluginName:(NSString*)pluginName;
 - (void) setWindowParams;
+
 
 @end

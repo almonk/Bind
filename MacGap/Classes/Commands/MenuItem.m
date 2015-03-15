@@ -37,7 +37,7 @@
 }
 - (id) initWithContext:(JSContext*)aContext andMenuItem:(NSMenuItem*)anItem
 {
-    NSAssert(anItem, @"anItem required");
+
     self = [super init]; //initWithContext:aContext];
     if (!self)
         return nil;

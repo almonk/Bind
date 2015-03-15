@@ -1,0 +1,21 @@
+{
+  "name": "bind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/atom.js",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "install": "^0.1.8",
+    "jsx-transform": "^0.11.2",
+    "npm": "^2.6.1"
+  },
+  "devDependencies": {
+    "gulp-connect": "^2.2.0",
+    "gulp-jsx": "^0.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

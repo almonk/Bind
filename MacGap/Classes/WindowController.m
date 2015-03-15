@@ -9,6 +9,7 @@
 #import "WindowController.h"
 #import "WebViewDelegate.h"
 #import "JSON.h"
+#import "WAYWindow.h"
 
 @interface WindowController ()
 
@@ -20,7 +21,15 @@
 @property (readwrite, assign) BOOL initialized;
 
 
--(void) setWindowParams;
+- (void) setWindowParams;
+- (void) willImportFile;
+- (void) willSaveFile;
+- (void) switchToGss;
+- (void) switchToHtml;
+- (void) switchToCss;
+-(IBAction)toggleSidebar:(id)sender;
+-(IBAction)toggleProperties:(id)sender;
+-(IBAction)willPlaceImage:(id)sender;
 
 @end
 
@@ -33,7 +42,6 @@
 - (void) setOfflineWebApplicationCacheEnabled:(BOOL)offlineWebApplicationCacheEnabled;
 @end
 
-
 @implementation WindowController
 
 @synthesize webView, url, initialized, webViewDelegate, jsContext;
@@ -45,6 +53,8 @@
     if (self) {
       
     }
+    [window setVibrantDarkAppearance];
+    [window setContentViewAppearanceVibrantDark];
     return self;
 }
 
@@ -53,8 +63,7 @@
     [super windowDidLoad];
  
     [self.webView setMainFrameURL:[self.url absoluteString]];
-   
-    
+    [[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
 }
 
 - (id) initWithURL:(NSString *) relativeURL{
@@ -68,6 +77,8 @@
     
     return self;
 }
+
+
 
 -(id) initWithRequest: (NSURLRequest *)request{
     self = [super initWithWindowNibName:@"MainWindow"];
@@ -96,7 +107,7 @@
     [webPrefs _setLocalStorageDatabasePath:savePath];
     [webPrefs setLocalStorageEnabled:YES];
     [webPrefs setDatabasesEnabled:YES];
-    [webPrefs setDeveloperExtrasEnabled:[[NSUserDefaults standardUserDefaults] boolForKey: @"developer"]];
+    [webPrefs setDeveloperExtrasEnabled:YES];
     [webPrefs setOfflineWebApplicationCacheEnabled:YES];
     [webPrefs setWebGLEnabled:YES];
     
@@ -120,9 +131,41 @@
     [self.webView setShouldCloseWithWindow:NO];
     [self.webView setGroupName:@"MacGap"];
     self.pluginObjects = [[NSMutableDictionary alloc] initWithCapacity:20];
-    
-    
+}
 
+- (void) willImportFile {
+    [Event triggerEvent:@"willImportFile" forWebView:self.webView];
+    NSLog(@"Import file");
+}
+
+- (void) willSaveFile {
+    [Event triggerEvent:@"willSaveFile" forWebView:self.webView];
+    NSLog(@"Save file");
+}
+
+- (void) switchToGss {
+    [Event triggerEvent:@"switchToGss" forWebView:self.webView];
+}
+
+- (void) switchToHtml {
+    [Event triggerEvent:@"switchToHtml" forWebView:self.webView];
+}
+
+- (void) switchToCss {
+    [Event triggerEvent:@"switchToCss" forWebView:self.webView];
+}
+
+-(IBAction)toggleSidebar:(id)sender {
+    [Event triggerEvent:@"toggleSidebar" forWebView:self.webView];
+}
+
+
+-(IBAction)toggleProperties:(id)sender {
+    [Event triggerEvent:@"toggleProperties" forWebView:self.webView];
+}
+
+-(IBAction)willPlaceImage:(id)sender {
+    [Event triggerEvent:@"willPlaceImage" forWebView:self.webView];
 }
 
 - (void) setWindowParams
@@ -159,7 +202,6 @@
     }
     
     [[self window] setFrame:frame display: YES];
-
   
 }
 

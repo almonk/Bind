@@ -1,28 +1,25 @@
 {
     "main": "public/index.html",
-    "name": "MacGap",
+    "name": "Bind",
     "description": "",
-    "version": "2.0.0",
+    "version": "0.1.0",
     "plugins" : {
                 "Dock":"Dock",
                 "Dialog":"Dialog",
                 "Fonts" : "Fonts",
-                "Clipboard":"Clipboard",
                 "StatusItem":"StatusItem",
                 "Task" : "Task",
-                "Sound" : "Sound",
                 "Defaults" : "Defaults",
-                "File" : "File"
+                "File" : "File",
+                "Menu" : "Menu",
+                "MenuItem" : "MenuItem",
                  },
     "window" : {
-        "title" : "MacGap",
-        "width" : 900,
-        "height" : 600,
+        "title" : "Bind",
+        "width" : 1280,
+        "height" : 800,
         "position": "center",
         "min_width": 400,
         "min_height": 200,
-        "max_width": 1200,
-        "max_height": 800
     }
-  
 }

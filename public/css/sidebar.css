@@ -1,0 +1,69 @@
+.sidebar {
+  width: 600px;
+  overflow: none;
+  border-right: 1px solid #B8B8B8;
+  background-color: #fff;
+  position: relative;
+  display: block;
+}
+
+.sidebar.is-hidden {
+  width: 0px;
+  display: none;
+}
+
+.sidebar__editor {
+  position: fixed;
+  top:39px;
+  left:0px;
+  width: 600px;
+  bottom:0px;
+  border: 0px;
+  outline: none;
+  background-color: transparent;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+  padding: 20px;
+  cursor: text!important;
+  display: none;
+}
+
+.CodeMirror {
+  position: fixed!important;
+  top:26px;
+  font-family: 'Source Code Pro', monospace!important;
+  left:0px;
+  width: 599px;
+  font-size: 14px;
+  bottom:0px;
+  overflow: hidden;
+  background: white;
+  height: auto!important;
+  cursor: text!important;
+}
+
+.sidebar__tab-header {
+  display: inline-block;
+  width: 33.33%;
+  text-align: center;
+  padding: 7px 0;
+  text-decoration: none;
+  color: black;
+  background-color: #F5F5F5;
+  color: #818181;
+  font-size: 12px;
+}
+
+.sidebar__tab-header.is-active {
+  font-weight: bold;
+  background-color: #6D6C6D;
+  color: white;
+}
+
+.sidebar__tab {
+  display: none;
+}
+
+.sidebar__tab.is-active {
+  display: block;
+}

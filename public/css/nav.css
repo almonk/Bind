@@ -1,0 +1,21 @@
+nav {
+  height: 22px;
+  border-bottom: 1px solid rgba(0,0,0,0.4);
+  background-color: #fff;
+  -webkit-app-region: drag;
+  background: linear-gradient(#1D1F21, #1D1F21);
+  padding-left: 12px;
+}
+
+.nav__control {
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background-color: #949EA6;
+  border-radius: 50%;
+  position: relative;
+  top: 11px;
+  display: inline-block;
+  margin-right: 8px;
+  -webkit-app-region: no-drag;
+}

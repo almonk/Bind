@@ -1,0 +1,29 @@
+/* Bind components */
+@import "reset.css";
+@import "nav.css";
+@import "status-bar.css";
+@import "sidebar.css";
+@import "canvas.css";
+@import "properties-panel.css";
+
+/* Vendor */
+@import "flex.css";
+@import "codemirror.css";
+@import "tomorrow-night-eighties.css";
+
+html,body {
+  font-family: sans-serif;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}

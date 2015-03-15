@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1090" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="WindowController">
@@ -13,9 +12,9 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Bind" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" frameAutosaveName="" animationBehavior="default" id="F0z-JX-Cv5" customClass="WAYWindow">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="931" y="455" width="656" height="402"/>
@@ -33,7 +32,79 @@
                     </webView>
                 </subviews>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="7E32425A-DA47-4F79-889D-AAAEA0CAAD42" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="VHy-kH-inG">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="pS7-EC-pm3"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="JDc-k3-TJh"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="VKW-0J-lw8"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="hSa-c3-QOn"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="y48-EW-J96"/>
+                    <toolbarItem implicitItemIdentifier="865FCDC6-3EFB-4D00-AE82-F58B5E27C230" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="viewIcon" id="Ub2-xq-BbI"/>
+                    <toolbarItem implicitItemIdentifier="CF438314-6204-4936-A98D-EB4AAF6C0EC5" label="View code" paletteLabel="Custom View" image="viewIcon" id="FPj-ki-dZn">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="30" height="25"/>
+                        <size key="maxSize" width="60" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="KDr-UG-c8s">
+                            <rect key="frame" x="0.0" y="14" width="60" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="viewIcon" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Orm-Uv-APm">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="1990E20C-2F4D-4BA6-A172-7C81075B6ED4" label="Sidebar" paletteLabel="Sidebar" image="sidebar" id="oU7-D5-Ycb">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="25"/>
+                        <size key="maxSize" width="36" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="c5p-mL-Nbk">
+                            <rect key="frame" x="8" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="sidebar" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lNH-2p-sZQ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="toggleSidebar:" target="-2" id="t5J-h7-sQ1"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="863B364F-0F46-4AB1-84C4-7388EE7251A8" label="Properties" paletteLabel="Properties" image="properties" id="o9i-wF-bdx">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="25"/>
+                        <size key="maxSize" width="36" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="DRO-AL-CJ9">
+                            <rect key="frame" x="8" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="properties" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wR6-Sh-4cg">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="toggleProperties:" target="-2" id="asJ-fi-d8m"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="oU7-D5-Ycb"/>
+                    <toolbarItem reference="y48-EW-J96"/>
+                    <toolbarItem reference="o9i-wF-bdx"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="centerTrafficLightButtons" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="trafficLightButtonsLeftMargin">
+                    <real key="value" value="12"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="289" y="274"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="ZCr-Cb-xhD"/>
     </objects>
+    <resources>
+        <image name="properties" width="16" height="12"/>
+        <image name="sidebar" width="16" height="12"/>
+        <image name="viewIcon" width="32" height="32"/>
+    </resources>
 </document>
