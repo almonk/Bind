@@ -1,0 +1,76 @@
+var PropertiesPanel = React.createClass({displayName: "PropertiesPanel",
+  addIntrinsicSize: function() {
+    gssEditor.replaceRange("#" + this.props.selectedElement + "[size] == #" + this.props.selectedElement + "[intrinsic-size];\n", {line: Infinity});
+  },
+
+  addConstraint: function() {
+    var ev = new CustomEvent('showAddConstraint'); 
+    ev.initEvent('showAddConstraint');
+    window.dispatchEvent(ev);
+  },
+
+  addConnection: function() {
+    var ev = new CustomEvent('showAddConnection'); 
+    ev.initEvent('showAddConnection');
+    window.dispatchEvent(ev);
+  },
+
+  render: function() {
+    var cx = React.addons.classSet;
+    var buttonClasses = cx({
+      'properties-panel__button': true,
+      'is-hidden': !this.props.selectedElement,
+    });
+
+    var colClasses = cx({
+      'COL properties-panel': true,
+      'is-hidden': this.props.multipleSelectedElements,
+    });
+
+    var colTwoClasses = cx({
+      'COL properties-panel': true,
+      'is-hidden': !this.props.multipleSelectedElements,
+    });
+
+    return (
+      React.createElement("div", null, 
+        React.createElement("div", {className: colClasses}, 
+          React.createElement("div", {className: "properties-panel__element-name"}, "#", this.props.selectedElement), 
+
+          React.createElement("div", {className: "properties-panel__form-element"}, 
+            React.createElement("input", {disabled: true, type: "text", ref: "xPos", value: this.props.left}), 
+            React.createElement("label", null, "X")
+          ), 
+
+          React.createElement("div", {className: "properties-panel__form-element"}, 
+            React.createElement("input", {disabled: true, type: "text", ref: "yPos", value: this.props.top}), 
+            React.createElement("label", null, "X")
+          ), 
+
+          React.createElement("div", {className: "properties-panel__form-element"}, 
+            React.createElement("input", {disabled: true, type: "text", ref: "width", value: this.props.width}), 
+            React.createElement("label", null, "Width")
+          ), 
+
+          React.createElement("div", {className: "properties-panel__form-element"}, 
+            React.createElement("input", {disabled: true, type: "text", ref: "height", value: this.props.height}), 
+            React.createElement("label", null, "Height")
+          ), 
+
+          React.createElement("div", {className: "properties-panel__divider-name"}, "Constraints"), 
+
+          React.createElement("a", {href: "#", className: buttonClasses, onClick: this.addIntrinsicSize}, "Add intrinsic size"), 
+
+          React.createElement("a", {href: "#", className: buttonClasses, onClick: this.addConstraint}, "Add constraint")
+        ), 
+
+        React.createElement("div", {className: colTwoClasses}, 
+          React.createElement("div", {className: "properties-panel__element-name"}, this.props.multipleSelectedElements.length, " selected"), 
+          React.createElement("a", {href: "#", className: "properties-panel__button", onClick: this.addConnection}, "Add uniform connection"), 
+          React.createElement("a", {href: "#", className: "properties-panel__button", onClick: this.addConnection}, "Add complex connection")
+        )
+      )
+    );
+  }
+});
+
