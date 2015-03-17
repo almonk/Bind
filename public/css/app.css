@@ -6,6 +6,8 @@
 @import "canvas.css";
 @import "properties-panel.css";
 @import "add-element.css";
+@import "add-constraint.css";
+@import "add-connection.css";
 @import "modal.css";
 
 /* Vendor */

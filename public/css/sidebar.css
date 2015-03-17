@@ -12,6 +12,11 @@
   display: none;
 }
 
+.sidebar input[type=checkbox] {
+  display: none!important; 
+  /*Hack for Cocoa bug?!*/
+}
+
 .sidebar__editor {
   position: fixed;
   top:39px;

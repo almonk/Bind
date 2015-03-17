@@ -8,7 +8,7 @@ var Sidebar = React.createClass({
       activeTab: 1
     };
   },
-
+  
   componentDidMount: function() {
     gssEditor = CodeMirror.fromTextArea(document.getElementById("sidebarGssEditor"), {
       mode: 'text/css',
@@ -94,7 +94,6 @@ var Sidebar = React.createClass({
 
   addDiv: function() {
     htmlEditor.replaceRange("<div id=box1></div>\n", {line: Infinity});
-    gssEditor.replaceRange("#box1[size] == #box1[intrinsic-size];\n#box1[center] == ::window[center];\n", {line: Infinity});
     cssEditor.replaceRange("#box1{\n  background-color: blue;\n  height: 80px;\n  width: 80px;\n}\n", {line: Infinity});
 
     this.props.onHtmlChanged({html: htmlEditor.getValue()});

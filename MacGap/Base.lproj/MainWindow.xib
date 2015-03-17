@@ -15,7 +15,6 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Bind" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" frameAutosaveName="" animationBehavior="default" id="F0z-JX-Cv5" customClass="WAYWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
-            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="931" y="455" width="656" height="402"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>

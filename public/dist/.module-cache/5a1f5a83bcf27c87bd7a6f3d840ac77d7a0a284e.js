@@ -93,9 +93,8 @@ var Sidebar = React.createClass({displayName: "Sidebar",
   },
 
   addDiv: function() {
-    htmlEditor.replaceRange("<div id=box1></div>\n", {line: Infinity});
-    gssEditor.replaceRange("#box1[size] == #box1[intrinsic-size];\n#box1[center] == ::window[center];\n", {line: Infinity});
-    cssEditor.replaceRange("#box1{\n  background-color: blue;\n  height: 80px;\n  width: 80px;\n}\n", {line: Infinity});
+    htmlEditor.replaceRange("<div id=testBox></div>\n", {line: Infinity});
+    cssEditor.replaceRange("#testBox{\n  background-color: blue;\n  height: 80px;\n  width: 80px;\n}\n", {line: Infinity});
 
     this.props.onHtmlChanged({html: htmlEditor.getValue()});
     this.props.onCssChanged({css: cssEditor.getValue()});

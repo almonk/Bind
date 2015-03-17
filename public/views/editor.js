@@ -1,3 +1,6 @@
+var selectedEls = [];
+var selectedClass = 'bind-element--is-selected';
+
 var Editor = React.createClass({
   componentDidMount: function() {
     document.querySelector('#bindCanvas').contentWindow.document.onclick = function(event){this.handleEditorClick(event)}.bind(this);
@@ -7,12 +10,8 @@ var Editor = React.createClass({
     window.addEventListener('toggleProperties', this.toggleProperties);
     window.addEventListener('willPlaceImage', this.willPlaceImage);
     window.addEventListener('showAddElement', this.showAddElement);
-  },
-
-  componentDidUpdate: function(prevProps, prevState) {
-    setTimeout(function(){
-      document.querySelector('#bindCanvas').contentWindow.document.onclick = function(event){this.handleEditorClick(event)}.bind(this);
-    }.bind(this), 500)
+    window.addEventListener('showAddConstraint', this.showAddConstraint);
+    window.addEventListener('showAddConnection', this.showAddConnection);
   },
 
   componentWillUnmount: function() {
@@ -22,6 +21,14 @@ var Editor = React.createClass({
     window.removeEventListener('toggleProperties', this.toggleProperties);
     window.removeEventListener('willPlaceImage', this.willPlaceImage);
     window.removeEventListener('showAddElement', this.showAddElement);
+    window.removeEventListener('showAddConstraint', this.showAddConstraint);
+    window.removeEventListener('showAddConnection', this.showAddConnection);
+  },
+
+  componentDidUpdate: function(prevProps, prevState) {
+    setTimeout(function(){
+      document.querySelector('#bindCanvas').contentWindow.document.onclick = function(event){this.handleEditorClick(event)}.bind(this);
+    }.bind(this), 500)
   },
 
   toggleSidebar: function() {
@@ -29,9 +36,20 @@ var Editor = React.createClass({
   },
 
   showAddElement: function() {
-    console.log('test');
     this.setState({
       addElementVisiblility: !this.state.addElementVisiblility
+    });
+  },
+
+  showAddConstraint: function() {
+    this.setState({
+      addConstraintVisiblility: !this.state.addConstraintVisiblility
+    });
+  },
+
+  showAddConnection: function() {
+    this.setState({
+      addConnectionVisibility: !this.state.addConnectionVisibility
     });
   },
 
@@ -75,6 +93,9 @@ var Editor = React.createClass({
       cssToRender: '',
       canvasState: '',
       addElementVisiblility: false,
+      addConstraintVisiblility: false,
+      addConnectionVisibility: false,
+      multipleSelectedElements: false,
       endCruft: '</html>',
       headCruft: '<html><head><link rel="stylesheet" type="text/css" href="css/reset.css"/><link rel="stylesheet" type="text/css" href="css/bind-element.css"/></script><script src="dist/gss.min.js"></script><script type="text/javascript">window.engine = new GSS(document);</script><style type="text/css">.gss-not-ready body { opacity: 0; } .gss-ready body { opacity: 1; }</style></head>',
     };
@@ -106,44 +127,75 @@ var Editor = React.createClass({
 
   exportSource: function() {
     var exportSource = '{"bind": { "css":"'+btoa(this.state.cssToRender)+'","gss":"'+btoa(this.state.gssToRender)+'","html":"'+btoa(this.state.htmlToRender)+'"}}';
-    // this.props.changedEditorSource({editorSource: exportSource});
     return exportSource;
   },
 
   handleEditorClick: function(event) {
-    console.log(event.target.offsetX);
+    if (!event.shiftKey) {
+      //Shift key not held
+      selectedEls = [];
 
-    var divs = document.querySelector('#bindCanvas').contentWindow.document.body.querySelectorAll('*');
+      var divs = document.querySelector('#bindCanvas').contentWindow.document.body.querySelectorAll('*');
 
-    [].forEach.call(divs, function(div) {
-      div.classList.remove('bind-element--is-selected');
-    });
-
-    if (event.target.id != '') {
-      event.target.classList.add('bind-element--is-selected');
-
-      this.setState({
-        selectedElement: event.target.id,
-        selectedElWidth: event.target.offsetWidth,
-        selectedElHeight: event.target.offsetHeight,
-        selectedElX: event.target.offsetLeft,
-        selectedElY: event.target.offsetTop,
+      [].forEach.call(divs, function(div) {
+        div.classList.remove(selectedClass);
       });
+
+      if (event.target.id != '') {
+        // An element with an ID is selected
+        event.target.classList.add(selectedClass);
+
+        this.setState({
+          selectedElement: event.target.id,
+          selectedElWidth: event.target.offsetWidth,
+          selectedElHeight: event.target.offsetHeight,
+          selectedElX: event.target.offsetLeft,
+          selectedElY: event.target.offsetTop,
+          multipleSelectedElements: false
+        });
+      } else {
+        // Set to none
+        this.setState({
+          selectedElement: null,
+          multipleSelectedElements: false,
+          selectedElWidth: null,
+          selectedElHeight: null,
+          selectedElX: null,
+          selectedElY: null,
+        });
+      }
     } else {
-      this.setState({
-        selectedElement: null,
-        selectedElWidth: null,
-        selectedElHeight: null,
-        selectedElX: null,
-        selectedElY: null,
-      });
-    }
+      //Shift key held
+      
+
+      if (event.target.id != '') {
+        if (event.target.classList.contains(selectedClass)) {
+          // If already selected remove from array
+          var i = selectedEls.indexOf(event.target.id);
+          selectedEls.splice(i, 1);
+          console.log(i);
+
+          event.target.classList.remove(selectedClass);
+        } else {
+          selectedEls.push("#" + event.target.id)
+          event.target.classList.add(selectedClass);
+        };
+
+        console.log(selectedEls);
+
+        this.setState({
+          multipleSelectedElements: selectedEls
+        });
+      }
+    };
   },
 
   render: function() {
     return (
       <div className="EXTENDER">
         <AddElement handleExit={this.showAddElement} visiblility={this.state.addElementVisiblility}/>
+        <AddConstraint visiblility={this.state.addConstraintVisiblility} selectedElement={this.state.selectedElement}/>
+        <AddConnection visiblility={this.state.addConnectionVisibility} selectedElements={this.state.multipleSelectedElements}/>
         <div className="COLS">
           <Sidebar onCssChanged={this.renderCss} onGssChanged={this.renderGss} onHtmlChanged={this.renderHtml}/>
           <div id="canvas" className="COL-FLEX canvas">
@@ -151,6 +203,7 @@ var Editor = React.createClass({
           </div>
           <PropertiesPanel
             selectedElement={this.state.selectedElement}
+            multipleSelectedElements={this.state.multipleSelectedElements}
             left={this.state.selectedElX}
             top={this.state.selectedElY}
             height={this.state.selectedElHeight}
