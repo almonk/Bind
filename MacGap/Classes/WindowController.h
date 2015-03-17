@@ -44,6 +44,7 @@
 - (void) switchToGss;
 - (void) switchToHtml;
 - (void) switchToCss;
+-(IBAction)showAddElement:(id)sender;
 -(IBAction)toggleSidebar:(id)sender;
 -(IBAction)toggleProperties:(id)sender;
 -(IBAction)willPlaceImage:(id)sender;

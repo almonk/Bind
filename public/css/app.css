@@ -5,6 +5,8 @@
 @import "sidebar.css";
 @import "canvas.css";
 @import "properties-panel.css";
+@import "add-element.css";
+@import "modal.css";
 
 /* Vendor */
 @import "flex.css";

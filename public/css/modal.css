@@ -1,0 +1,51 @@
+.modal {
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal.is-active {
+  pointer-events: auto;
+  background-color: transparent;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal.is-dark {
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-input {
+  position: fixed;
+  z-index: 9999;
+  background-color: white;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+  border-radius: 2px;
+  padding: 20px;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
+  top: 200px;
+}
+
+.modal-input p {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.modal-input.is-active {
+  pointer-events: auto;
+  opacity: 1;
+  font-size: 13px;
+}
+
+.modal__input--large {
+  width: 100%;
+  font-size: 24px;
+}

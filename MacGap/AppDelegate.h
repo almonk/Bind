@@ -14,6 +14,5 @@
 
 @property (retain, nonatomic) WindowController *windowController;
 
--(IBAction)doSomethingFun:(id)sender;
 
 @end

@@ -27,6 +27,7 @@
 - (void) switchToGss;
 - (void) switchToHtml;
 - (void) switchToCss;
+-(IBAction)showAddElement:(id)sender;
 -(IBAction)toggleSidebar:(id)sender;
 -(IBAction)toggleProperties:(id)sender;
 -(IBAction)willPlaceImage:(id)sender;
@@ -155,10 +156,13 @@
     [Event triggerEvent:@"switchToCss" forWebView:self.webView];
 }
 
+-(IBAction)showAddElement:(id)sender {
+    [Event triggerEvent:@"showAddElement" forWebView:self.webView];
+}
+
 -(IBAction)toggleSidebar:(id)sender {
     [Event triggerEvent:@"toggleSidebar" forWebView:self.webView];
 }
-
 
 -(IBAction)toggleProperties:(id)sender {
     [Event triggerEvent:@"toggleProperties" forWebView:self.webView];

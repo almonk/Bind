@@ -6,6 +6,7 @@ var Editor = React.createClass({
     window.addEventListener('toggleSidebar', this.toggleSidebar);
     window.addEventListener('toggleProperties', this.toggleProperties);
     window.addEventListener('willPlaceImage', this.willPlaceImage);
+    window.addEventListener('showAddElement', this.showAddElement);
   },
 
   componentDidUpdate: function(prevProps, prevState) {
@@ -20,10 +21,18 @@ var Editor = React.createClass({
     window.removeEventListener('toggleSidebar', this.toggleSidebar);
     window.removeEventListener('toggleProperties', this.toggleProperties);
     window.removeEventListener('willPlaceImage', this.willPlaceImage);
+    window.removeEventListener('showAddElement', this.showAddElement);
   },
 
   toggleSidebar: function() {
     document.querySelector('.sidebar').classList.toggle('is-hidden');
+  },
+
+  showAddElement: function() {
+    console.log('test');
+    this.setState({
+      addElementVisiblility: !this.state.addElementVisiblility
+    });
   },
 
   toggleProperties: function() {
@@ -65,6 +74,7 @@ var Editor = React.createClass({
       gssToRender: '',
       cssToRender: '',
       canvasState: '',
+      addElementVisiblility: false,
       endCruft: '</html>',
       headCruft: '<html><head><link rel="stylesheet" type="text/css" href="css/reset.css"/><link rel="stylesheet" type="text/css" href="css/bind-element.css"/></script><script src="dist/gss.min.js"></script><script type="text/javascript">window.engine = new GSS(document);</script><style type="text/css">.gss-not-ready body { opacity: 0; } .gss-ready body { opacity: 1; }</style></head>',
     };
@@ -133,6 +143,7 @@ var Editor = React.createClass({
   render: function() {
     return (
       <div className="EXTENDER">
+        <AddElement handleExit={this.showAddElement} visiblility={this.state.addElementVisiblility}/>
         <div className="COLS">
           <Sidebar onCssChanged={this.renderCss} onGssChanged={this.renderGss} onHtmlChanged={this.renderHtml}/>
           <div id="canvas" className="COL-FLEX canvas">

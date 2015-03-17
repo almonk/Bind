@@ -1,0 +1,43 @@
+.add-element {
+  position: absolute;
+  z-index: 9999;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+  border-radius: 2px;
+  left: 123px;
+  top: 2px;
+  font-size: 13px;
+  cursor: default;
+  overflow: hidden;
+  opacity: 0;
+  width: 220px;
+  pointer-events: none;
+  -webkit-transform: scale(.8) translateY(-30%);
+  -webkit-transition: .2s cubic-bezier(.3, 0, 0, 1.3);
+}
+
+.add-element.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transform: none;
+}
+
+.add-element.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transform: scale(.8) translateY(-30%);
+  -webkit-transition: .2s cubic-bezier(.3, 0, 0, 1.3);
+}
+
+.add-element a {
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  display: block;
+  text-decoration: none;
+  color: #585858;
+}
+
+.add-element a:hover {
+  background-color: #268AF1;
+  color: white;
+}
