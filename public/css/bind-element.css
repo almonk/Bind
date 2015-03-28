@@ -1,3 +1,7 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 .bind-element--is-selected {
-  box-shadow: 0px 0px 0px 2px #5F9FD9;
+  outline: 2px solid #5F9FD9;
 }

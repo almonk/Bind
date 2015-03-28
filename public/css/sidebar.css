@@ -5,6 +5,7 @@
   background-color: #fff;
   position: relative;
   display: block;
+  z-index: 1;
 }
 
 .sidebar.is-hidden {

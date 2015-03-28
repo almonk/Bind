@@ -21,15 +21,24 @@ var Sidebar = React.createClass({
       mode: 'text/html',
       lineNumbers: true,
       autofocus: true,
-      theme: 'tomorrow-night-eighties'
+      theme: 'tomorrow-night-eighties',
+      profile: 'xhtml'
     });
+
+    emmetCodeMirror(htmlEditor);
 
     cssEditor = CodeMirror.fromTextArea(document.getElementById("sidebarCssEditor"), {
       mode: 'text/css',
       lineNumbers: true,
       autofocus: true,
-      theme: 'tomorrow-night-eighties'
+      theme: 'tomorrow-night-eighties',
+      indentUnit: 2,
+      indentWithTabs: true,
+      smartIndent: true,
+      tabSize: 2
     });
+
+    emmetCodeMirror(cssEditor);
 
     var debounceHtmlUpdate = _.debounce(function(){
       this.props.onHtmlChanged({html: htmlEditor.getValue()});

@@ -1,7 +1,19 @@
 .properties-panel {
   width: 240px;
   background-color: #E6E6E6;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+.properties-parent {
+  width: 240px;
+  background-color: #E6E6E6;
   border-left: 1px solid #B8B8B8;
+}
+
+.properties-parent.is-hidden {
+  width: 0px;
 }
 
 .properties-panel.is-hidden {

@@ -1,7 +1,6 @@
 var AddConstraint = React.createClass({
   addConstraints: function(e) {
     e.preventDefault();
-    var sList = "";
     var selected = this.props.selectedElement;
 
     $('.add-constraint input[type=text]').each(function () {
@@ -74,6 +73,13 @@ var AddConstraint = React.createClass({
             <label>
               Width
             </label>
+            <select>
+              <option value="eq">&#61;&#61;</option>
+              <option value="gtOrEq">&gt;&#61;</option>
+              <option value="ltOrEq">&lt;&#61;</option>
+              <option value="lt">&lt;</option>
+              <option value="gt">&gt;</option>
+            </select>
             <input type="text" id="bind-width" autofocus/>
           </div>
 
@@ -81,6 +87,13 @@ var AddConstraint = React.createClass({
             <label>
               Height
             </label>
+            <select>
+              <option value="eq">&#61;&#61;</option>
+              <option value="gtOrEq">&gt;&#61;</option>
+              <option value="ltOrEq">&lt;&#61;</option>
+              <option value="lt">&lt;</option>
+              <option value="gt">&gt;</option>
+            </select>
             <input type="text" id="bind-height"/>
           </div>
 
@@ -90,6 +103,13 @@ var AddConstraint = React.createClass({
             <label>
               Top
             </label>
+            <select>
+              <option value="eq">&#61;&#61;</option>
+              <option value="gtOrEq">&gt;&#61;</option>
+              <option value="ltOrEq">&lt;&#61;</option>
+              <option value="lt">&lt;</option>
+              <option value="gt">&gt;</option>
+            </select>
             <input type="text" id="bind-top"/>
           </div>
 
@@ -97,6 +117,13 @@ var AddConstraint = React.createClass({
             <label>
               Bottom
             </label>
+            <select>
+              <option value="eq">&#61;&#61;</option>
+              <option value="gtOrEq">&gt;&#61;</option>
+              <option value="ltOrEq">&lt;&#61;</option>
+              <option value="lt">&lt;</option>
+              <option value="gt">&gt;</option>
+            </select>
             <input type="text" id="bind-bottom"/>
           </div>
 
@@ -104,6 +131,13 @@ var AddConstraint = React.createClass({
             <label>
               Left
             </label>
+            <select>
+              <option value="eq">&#61;&#61;</option>
+              <option value="gtOrEq">&gt;&#61;</option>
+              <option value="ltOrEq">&lt;&#61;</option>
+              <option value="lt">&lt;</option>
+              <option value="gt">&gt;</option>
+            </select>
             <input type="text" id="bind-left"/>
           </div>
 
@@ -111,6 +145,13 @@ var AddConstraint = React.createClass({
             <label>
               Right
             </label>
+            <select>
+              <option value="eq">&#61;&#61;</option>
+              <option value="gtOrEq">&gt;&#61;</option>
+              <option value="ltOrEq">&lt;&#61;</option>
+              <option value="lt">&lt;</option>
+              <option value="gt">&gt;</option>
+            </select>
             <input type="text" id="bind-right"/>
           </div>
 
@@ -120,6 +161,13 @@ var AddConstraint = React.createClass({
             <label>
               Center X
             </label>
+            <select>
+              <option value="eq">&#61;&#61;</option>
+              <option value="gtOrEq">&gt;&#61;</option>
+              <option value="ltOrEq">&lt;&#61;</option>
+              <option value="lt">&lt;</option>
+              <option value="gt">&gt;</option>
+            </select>
             <input type="text" id="bind-center-x"/>
           </div>
 
@@ -127,6 +175,13 @@ var AddConstraint = React.createClass({
             <label>
               Center Y
             </label>
+            <select>
+              <option value="eq">&#61;&#61;</option>
+              <option value="gtOrEq">&gt;&#61;</option>
+              <option value="ltOrEq">&lt;&#61;</option>
+              <option value="lt">&lt;</option>
+              <option value="gt">&gt;</option>
+            </select>
             <input type="text" id="bind-center-y"/>
           </div>
 

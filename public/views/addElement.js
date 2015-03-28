@@ -15,6 +15,16 @@ var AddElement = React.createClass({
     }.bind(this),100);
   },
 
+  placeImage: function() {
+    this.props.handleExit();
+
+    setTimeout(function(){
+      var ev = new CustomEvent('willPlaceImage'); 
+      ev.initEvent('willPlaceImage');
+      window.dispatchEvent(ev);
+    }.bind(this),100);
+  },
+
   cancelPopover: function() {
     this.props.handleExit();
   },
@@ -48,7 +58,7 @@ var AddElement = React.createClass({
       <div>
         <div className={classes}>
           <a href="#" onClick={this.createDiv}>Div</a>
-          <a href="#">Image</a>
+          <a href="#" onClick={this.placeImage}>Image</a>
           <a href="#">Text</a>
         </div>
 

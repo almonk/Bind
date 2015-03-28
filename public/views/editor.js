@@ -54,7 +54,7 @@ var Editor = React.createClass({
   },
 
   toggleProperties: function() {
-    document.querySelector('.properties-panel').classList.toggle('is-hidden');
+    document.querySelector('.properties-parent').classList.toggle('is-hidden');
   },
 
   handleImport: function() {
@@ -75,9 +75,10 @@ var Editor = React.createClass({
   },
 
   willPlaceImage: function() {
+    var imgId = "img-" + this.makeId();
     MacGap.Dialog.openDialog({files: true, callback: function(file){
       console.log(file);
-      htmlEditor.replaceRange("<img src='file://"+encodeURI(file[0])+"'/>\n", {line: Infinity});
+      htmlEditor.replaceRange("<img id=" + imgId + " src='file://"+encodeURI(file[0])+"'/>\n", {line: Infinity});
     }});
   },
 
@@ -144,6 +145,7 @@ var Editor = React.createClass({
       if (event.target.id != '') {
         // An element with an ID is selected
         event.target.classList.add(selectedClass);
+        selectedEls.push("#" + event.target.id)
 
         this.setState({
           selectedElement: event.target.id,
@@ -166,8 +168,6 @@ var Editor = React.createClass({
       }
     } else {
       //Shift key held
-      
-
       if (event.target.id != '') {
         if (event.target.classList.contains(selectedClass)) {
           // If already selected remove from array
@@ -188,6 +188,15 @@ var Editor = React.createClass({
         });
       }
     };
+  },
+
+  makeId: function() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
   },
 
   render: function() {

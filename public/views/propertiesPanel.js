@@ -3,6 +3,12 @@ var PropertiesPanel = React.createClass({
     gssEditor.replaceRange("#" + this.props.selectedElement + "[size] == #" + this.props.selectedElement + "[intrinsic-size];\n", {line: Infinity});
   },
 
+  addIntrinsicSizeAll: function() {
+    this.props.multipleSelectedElements.forEach(function(element) {
+      gssEditor.replaceRange(element + "[size] == " + element + "[intrinsic-size];\n", {line: Infinity});
+    });
+  },
+
   addConstraint: function() {
     var ev = new CustomEvent('showAddConstraint'); 
     ev.initEvent('showAddConstraint');
@@ -33,7 +39,7 @@ var PropertiesPanel = React.createClass({
     });
 
     return (
-      <div>
+      <div className="properties-parent">
         <div className={colClasses}>
           <div className="properties-panel__element-name">#{this.props.selectedElement}</div>
 
@@ -66,6 +72,7 @@ var PropertiesPanel = React.createClass({
 
         <div className={colTwoClasses}>
           <div className="properties-panel__element-name">{this.props.multipleSelectedElements.length} selected</div>
+          <a href="#" className="properties-panel__button" onClick={this.addIntrinsicSizeAll}>Add intrinsic size to all</a>
           <a href="#" className="properties-panel__button" onClick={this.addConnection}>Add uniform connection</a>
           <a href="#" className="properties-panel__button" onClick={this.addConnection}>Add complex connection</a>
         </div>
