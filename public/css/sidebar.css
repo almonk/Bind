@@ -9,7 +9,6 @@
 }
 
 .sidebar.is-hidden {
-  width: 0px;
   display: none;
 }
 

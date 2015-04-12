@@ -11,6 +11,7 @@ var Editor = React.createClass({
     window.addEventListener('willPlaceImage', this.willPlaceImage);
     window.addEventListener('showAddElement', this.showAddElement);
     window.addEventListener('showAddConstraint', this.showAddConstraint);
+    window.addEventListener('showAddMultipleConstraint', this.showAddMultipleConstraint);
     window.addEventListener('showAddConnection', this.showAddConnection);
   },
 
@@ -22,6 +23,7 @@ var Editor = React.createClass({
     window.removeEventListener('willPlaceImage', this.willPlaceImage);
     window.removeEventListener('showAddElement', this.showAddElement);
     window.removeEventListener('showAddConstraint', this.showAddConstraint);
+    window.removeEventListener('showAddMultipleConstraint', this.showAddMultipleConstraint);
     window.removeEventListener('showAddConnection', this.showAddConnection);
   },
 
@@ -33,6 +35,9 @@ var Editor = React.createClass({
 
   toggleSidebar: function() {
     document.querySelector('.sidebar').classList.toggle('is-hidden');
+    setTimeout(htmlEditor.refresh(), 0);
+    setTimeout(cssEditor.refresh(), 0);
+    setTimeout(gssEditor.refresh(), 0);
   },
 
   showAddElement: function() {
@@ -44,6 +49,12 @@ var Editor = React.createClass({
   showAddConstraint: function() {
     this.setState({
       addConstraintVisiblility: !this.state.addConstraintVisiblility
+    });
+  },
+
+  showAddMultipleConstraint: function() {
+    this.setState({
+      addMultipleConstraintVisiblility: !this.state.addMultipleConstraintVisiblility
     });
   },
 
@@ -69,9 +80,20 @@ var Editor = React.createClass({
 
   handleSave: function() {
     var exportSource = '{"bind": { "css":"'+btoa(this.state.cssToRender)+'","gss":"'+btoa(this.state.gssToRender)+'","html":"'+btoa(this.state.htmlToRender)+'"}}';
-    MacGap.Dialog.saveDialog({title: 'Save document', prompt: 'Save', filename: 'Untitled.bind', allowedTypes: ['bind'], callback: function(result) {
-      MacGap.File.write(result.filePath, exportSource, 'string');
-    }})
+
+    if (this.state.documentHasBeenSaved) {
+      MacGap.File.write(this.state.documentHasBeenSaved, exportSource, 'string');
+      this.setState({
+        documentHasBeenSaved: result.filePath
+      });
+    } else {
+      MacGap.Dialog.saveDialog({title: 'Save document', prompt: 'Save', filename: 'Untitled.bind', allowedTypes: ['bind'], callback: function(result) {
+        MacGap.File.write(result.filePath, exportSource, 'string');
+        this.setState({
+          documentHasBeenSaved: result.filePath
+        });
+      }})
+    }
   },
 
   willPlaceImage: function() {
@@ -93,8 +115,10 @@ var Editor = React.createClass({
       gssToRender: '',
       cssToRender: '',
       canvasState: '',
+      documentHasBeenSaved: null,
       addElementVisiblility: false,
       addConstraintVisiblility: false,
+      addMultipleConstraintVisiblility: false,
       addConnectionVisibility: false,
       multipleSelectedElements: false,
       endCruft: '</html>',
@@ -204,6 +228,7 @@ var Editor = React.createClass({
       <div className="EXTENDER">
         <AddElement handleExit={this.showAddElement} visiblility={this.state.addElementVisiblility}/>
         <AddConstraint visiblility={this.state.addConstraintVisiblility} selectedElement={this.state.selectedElement}/>
+        <AddMultipleConstraint visiblility={this.state.addMultipleConstraintVisiblility} selectedElements={this.state.multipleSelectedElements}/>
         <AddConnection visiblility={this.state.addConnectionVisibility} selectedElements={this.state.multipleSelectedElements}/>
         <div className="COLS">
           <Sidebar onCssChanged={this.renderCss} onGssChanged={this.renderGss} onHtmlChanged={this.renderHtml}/>

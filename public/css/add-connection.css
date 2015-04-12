@@ -5,7 +5,7 @@
   box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
   border-radius: 2px;
   right: 15px;
-  top: 73px;
+  top: 156px;
   font-size: 13px;
   cursor: default;
   overflow: hidden;
@@ -48,6 +48,7 @@
   width: 158px;
   display: inline-block;
   margin-left: 10px;
+  height:18px;
 }
 
 .add-connection__element button {
@@ -58,4 +59,17 @@
   border: 1px solid rgba(0,0,0,0.1);
   margin:0;
   padding:0;
+}
+
+.add-constraint__element__label {
+  display: inline-block;
+  padding-right: 6px;
+  padding-left: 8px;
+  width: auto!important;
+}
+
+.add-constraint__element__label input {
+  margin-right: 5px;
+  position: relative;
+  top: -1px;
 }

@@ -87,3 +87,11 @@
 .is-hidden {
   display: none;
 }
+
+.properties-panel hr {
+  background-color: #B8B8B8;
+  border: 0;
+  height: 1px;
+  margin:0;
+  padding:0;
+}

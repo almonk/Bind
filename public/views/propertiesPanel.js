@@ -15,6 +15,12 @@ var PropertiesPanel = React.createClass({
     window.dispatchEvent(ev);
   },
 
+  addConstraintToAll: function() {
+    var ev = new CustomEvent('showAddMultipleConstraint'); 
+    ev.initEvent('showAddMultipleConstraint');
+    window.dispatchEvent(ev);
+  },
+
   addConnection: function() {
     var ev = new CustomEvent('showAddConnection'); 
     ev.initEvent('showAddConnection');
@@ -73,8 +79,9 @@ var PropertiesPanel = React.createClass({
         <div className={colTwoClasses}>
           <div className="properties-panel__element-name">{this.props.multipleSelectedElements.length} selected</div>
           <a href="#" className="properties-panel__button" onClick={this.addIntrinsicSizeAll}>Add intrinsic size to all</a>
+          <a href="#" className="properties-panel__button" onClick={this.addConstraintToAll}>Add constraint to all</a>
+          <hr/>
           <a href="#" className="properties-panel__button" onClick={this.addConnection}>Add uniform connection</a>
-          <a href="#" className="properties-panel__button" onClick={this.addConnection}>Add complex connection</a>
         </div>
       </div>
     );

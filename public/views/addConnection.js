@@ -50,8 +50,8 @@ var AddConnection = React.createClass({
             <label>
               Direction
             </label>
-            <label><input type="radio" name="direction" defaultChecked={this.state.isHorizontal} value="h"/>Horizontal</label>
-            <label><input type="radio" name="direction" defaultChecked={this.state.isHorizontal} value="v"/>Vertical</label>
+            <label className="add-constraint__element__label"><input type="radio" name="direction" defaultChecked={this.state.isHorizontal} value="h"/>Horizontal</label>
+            <label className="add-constraint__element__label"><input type="radio" name="direction" defaultChecked={this.state.isHorizontal} value="v"/>Vertical</label>
           </div>
 
           <div className="add-constraint__element">

@@ -118,7 +118,7 @@
                                           sharedHTTPCookieStorage];
     [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     
-    [self.webView setApplicationNameForUserAgent: @"MacGap"];
+    [self.webView setApplicationNameForUserAgent: @"Bind"];
     
 	self.webViewDelegate = [[WebViewDelegate alloc] initWithMenu:[NSApp mainMenu]];
     self.webViewDelegate.windowController = self;

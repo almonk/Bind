@@ -7,35 +7,35 @@ var AddConstraint = React.createClass({
         var element = $(this).attr('id');
         
         if (element === 'bind-width' && $(this).val() != '') {
-          gssEditor.replaceRange("#"+selected+"[width] == "+$('#bind-width').val()+";\n", {line: Infinity});
+          gssEditor.replaceRange("#"+selected+"[width] "+$('#bind-width-operator').val()+" "+$('#bind-width').val()+";\n", {line: Infinity});
         };
 
         if (element === 'bind-height' && $(this).val() != '') {
-          gssEditor.replaceRange("#"+selected+"[height] == "+$('#bind-height').val()+";\n", {line: Infinity});
+          gssEditor.replaceRange("#"+selected+"[height] "+$('#bind-height-operator').val()+" "+$('#bind-height').val()+";\n", {line: Infinity});
         };
 
         if (element === 'bind-top' && $(this).val() != '') {
-          gssEditor.replaceRange("#"+selected+"[top] == "+$('#bind-top').val()+";\n", {line: Infinity});
+          gssEditor.replaceRange("#"+selected+"[top] "+$('#bind-top-operator').val()+" "+$('#bind-top').val()+";\n", {line: Infinity});
         };
 
         if (element === 'bind-bottom' && $(this).val() != '') {
-          gssEditor.replaceRange("#"+selected+"[bottom] == "+$('#bind-bottom').val()+";\n", {line: Infinity});
+          gssEditor.replaceRange("#"+selected+"[bottom] "+$('#bind-bottom-operator').val()+" "+$('#bind-bottom').val()+";\n", {line: Infinity});
         };
 
         if (element === 'bind-left' && $(this).val() != '') {
-          gssEditor.replaceRange("#"+selected+"[left] == "+$('#bind-left').val()+";\n", {line: Infinity});
+          gssEditor.replaceRange("#"+selected+"[left] "+$('#bind-left-operator').val()+" "+$('#bind-left').val()+";\n", {line: Infinity});
         };
 
         if (element === 'bind-right' && $(this).val() != '') {
-          gssEditor.replaceRange("#"+selected+"[right] == "+$('#bind-right').val()+";\n", {line: Infinity});
+          gssEditor.replaceRange("#"+selected+"[right] "+$('#bind-right-operator').val()+" "+$('#bind-right').val()+";\n", {line: Infinity});
         };
 
         if (element === 'bind-center-x' && $(this).val() != '') {
-          gssEditor.replaceRange("#"+selected+"[center-x] == "+$('#bind-center-x').val()+";\n", {line: Infinity});
+          gssEditor.replaceRange("#"+selected+"[center-x] "+$('#bind-center-x-operator').val()+" "+$('#bind-center-x').val()+";\n", {line: Infinity});
         };
 
         if (element === 'bind-center-y' && $(this).val() != '') {
-          gssEditor.replaceRange("#"+selected+"[center-y] == "+$('#bind-center-y').val()+";\n", {line: Infinity});
+          gssEditor.replaceRange("#"+selected+"[center-y] "+$('#bind-center-y-operator').val()+" "+$('#bind-center-y').val()+";\n", {line: Infinity});
         };
     });
 
@@ -48,7 +48,7 @@ var AddConstraint = React.createClass({
     });
 
     $('.add-constraint input[type=text]').val('');
-
+    $('.add-constraint select').prop('selectedIndex',0);
     var ev = new CustomEvent('showAddConstraint'); 
     ev.initEvent('showAddConstraint');
     window.dispatchEvent(ev);
@@ -73,12 +73,12 @@ var AddConstraint = React.createClass({
             <label>
               Width
             </label>
-            <select>
-              <option value="eq">&#61;&#61;</option>
-              <option value="gtOrEq">&gt;&#61;</option>
-              <option value="ltOrEq">&lt;&#61;</option>
-              <option value="lt">&lt;</option>
-              <option value="gt">&gt;</option>
+            <select id="bind-width-operator">
+              <option value="==">&#61;&#61;</option>
+              <option value=">=">&gt;&#61;</option>
+              <option value="=<">&#61;&lt;</option>
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
             </select>
             <input type="text" id="bind-width" autofocus/>
           </div>
@@ -87,12 +87,12 @@ var AddConstraint = React.createClass({
             <label>
               Height
             </label>
-            <select>
-              <option value="eq">&#61;&#61;</option>
-              <option value="gtOrEq">&gt;&#61;</option>
-              <option value="ltOrEq">&lt;&#61;</option>
-              <option value="lt">&lt;</option>
-              <option value="gt">&gt;</option>
+            <select id="bind-height-operator">
+              <option value="==">&#61;&#61;</option>
+              <option value=">=">&gt;&#61;</option>
+              <option value="=<">&#61;&lt;</option>
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
             </select>
             <input type="text" id="bind-height"/>
           </div>
@@ -103,12 +103,12 @@ var AddConstraint = React.createClass({
             <label>
               Top
             </label>
-            <select>
-              <option value="eq">&#61;&#61;</option>
-              <option value="gtOrEq">&gt;&#61;</option>
-              <option value="ltOrEq">&lt;&#61;</option>
-              <option value="lt">&lt;</option>
-              <option value="gt">&gt;</option>
+            <select id="bind-top-operator">
+              <option value="==">&#61;&#61;</option>
+              <option value=">=">&gt;&#61;</option>
+              <option value="=<">&#61;&lt;</option>
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
             </select>
             <input type="text" id="bind-top"/>
           </div>
@@ -117,12 +117,12 @@ var AddConstraint = React.createClass({
             <label>
               Bottom
             </label>
-            <select>
-              <option value="eq">&#61;&#61;</option>
-              <option value="gtOrEq">&gt;&#61;</option>
-              <option value="ltOrEq">&lt;&#61;</option>
-              <option value="lt">&lt;</option>
-              <option value="gt">&gt;</option>
+            <select id="bind-bottom-operator">
+              <option value="==">&#61;&#61;</option>
+              <option value=">=">&gt;&#61;</option>
+              <option value="=<">&#61;&lt;</option>
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
             </select>
             <input type="text" id="bind-bottom"/>
           </div>
@@ -131,12 +131,12 @@ var AddConstraint = React.createClass({
             <label>
               Left
             </label>
-            <select>
-              <option value="eq">&#61;&#61;</option>
-              <option value="gtOrEq">&gt;&#61;</option>
-              <option value="ltOrEq">&lt;&#61;</option>
-              <option value="lt">&lt;</option>
-              <option value="gt">&gt;</option>
+            <select id="bind-left-operator">
+              <option value="==">&#61;&#61;</option>
+              <option value=">=">&gt;&#61;</option>
+              <option value="=<">&#61;&lt;</option>
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
             </select>
             <input type="text" id="bind-left"/>
           </div>
@@ -145,12 +145,12 @@ var AddConstraint = React.createClass({
             <label>
               Right
             </label>
-            <select>
-              <option value="eq">&#61;&#61;</option>
-              <option value="gtOrEq">&gt;&#61;</option>
-              <option value="ltOrEq">&lt;&#61;</option>
-              <option value="lt">&lt;</option>
-              <option value="gt">&gt;</option>
+            <select id="bind-right-operator">
+              <option value="==">&#61;&#61;</option>
+              <option value=">=">&gt;&#61;</option>
+              <option value="=<">&#61;&lt;</option>
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
             </select>
             <input type="text" id="bind-right"/>
           </div>
@@ -161,12 +161,12 @@ var AddConstraint = React.createClass({
             <label>
               Center X
             </label>
-            <select>
-              <option value="eq">&#61;&#61;</option>
-              <option value="gtOrEq">&gt;&#61;</option>
-              <option value="ltOrEq">&lt;&#61;</option>
-              <option value="lt">&lt;</option>
-              <option value="gt">&gt;</option>
+            <select id="bind-center-x-operator">
+              <option value="==">&#61;&#61;</option>
+              <option value=">=">&gt;&#61;</option>
+              <option value="=<">&#61;&lt;</option>
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
             </select>
             <input type="text" id="bind-center-x"/>
           </div>
@@ -175,12 +175,12 @@ var AddConstraint = React.createClass({
             <label>
               Center Y
             </label>
-            <select>
-              <option value="eq">&#61;&#61;</option>
-              <option value="gtOrEq">&gt;&#61;</option>
-              <option value="ltOrEq">&lt;&#61;</option>
-              <option value="lt">&lt;</option>
-              <option value="gt">&gt;</option>
+            <select id="bind-center-y-operator">
+              <option value="==">&#61;&#61;</option>
+              <option value=">=">&gt;&#61;</option>
+              <option value="=<">&#61;&lt;</option>
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
             </select>
             <input type="text" id="bind-center-y"/>
           </div>
