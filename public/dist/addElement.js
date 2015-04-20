@@ -58,8 +58,7 @@ var AddElement = React.createClass({displayName: "AddElement",
       React.createElement("div", null, 
         React.createElement("div", {className: classes}, 
           React.createElement("a", {href: "#", onClick: this.createDiv}, "Div"), 
-          React.createElement("a", {href: "#", onClick: this.placeImage}, "Image"), 
-          React.createElement("a", {href: "#"}, "Text")
+          React.createElement("a", {href: "#", onClick: this.placeImage}, "Image")
         ), 
 
         React.createElement("div", {className: modalClasses, onClick: this.cancelPopover})

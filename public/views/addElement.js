@@ -59,7 +59,6 @@ var AddElement = React.createClass({
         <div className={classes}>
           <a href="#" onClick={this.createDiv}>Div</a>
           <a href="#" onClick={this.placeImage}>Image</a>
-          <a href="#">Text</a>
         </div>
 
         <div className={modalClasses} onClick={this.cancelPopover}></div>

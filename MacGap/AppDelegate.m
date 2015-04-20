@@ -99,4 +99,17 @@
     [self.windowController willPlaceImage:nil];
 }
 
+
+-(IBAction)contributeLink:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"http://github.com/almonk/bind"];
+    if( ![[NSWorkspace sharedWorkspace] openURL:url] )
+        NSLog(@"Failed to open url: %@",[url description]);
+}
+
+-(IBAction)docsLink:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"http://gridstylesheets.org/guides/ccss/"];
+    if( ![[NSWorkspace sharedWorkspace] openURL:url] )
+        NSLog(@"Failed to open url: %@",[url description]);
+}
+
 @end
