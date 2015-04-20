@@ -15,9 +15,8 @@ Bind is an open source, experimental tool for designing interfaces. It's a nativ
 #### Planned features
 * 1-click sharing
 * Visual versioning
-* 
 
-### Getting started
+#### Getting started
 Check out the example `login.bind` for an overview of the basics.
 
 ----
