@@ -4,6 +4,8 @@ Bind is an open source, experimental tool for designing interfaces. It's a nativ
 
 <img src="http://f.cl.ly/items/0X1o0y1F1r0h1U3e2n16/bind-screenshot.png"/>
 
+<a href="https://github.com/almonk/Bind/releases">Download for OSX from the Releases page</a>
+
 #### Features
 * Write GSS manually or automate it with built in UIs
 * Add constraints to multiple elements at once
