@@ -19,7 +19,7 @@ Bind is an open source, experimental tool for designing interfaces. It's a nativ
 * Conditional constraints UI (responsive)
 
 #### Getting started
-Check out the example `login.bind` for an overview of the basics.
+<a href="http://cloud.alasdairmonk.com/1i0s0u032N2y">Check out the example `login.bind`</a> for an overview of the basics. Important to note: for an element to be accessible via the UI it **must** have an `id=` attribute. 
 
 ----
 
