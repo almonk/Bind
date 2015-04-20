@@ -11,6 +11,7 @@ Bind is an open source, experimental tool for designing interfaces. It's a nativ
 * Supports emmet for HTML and CSS
 * Native OSX app with Yosemite integration
 * Presentation mode
+* Built in web console (Right click > Inspect)
 
 #### Planned features
 * 1-click sharing
